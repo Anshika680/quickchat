@@ -82,6 +82,7 @@ const LoginPage = () => {
             value={bio}
             rows={4}
             className=" bg-transparent p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className=" bg-transparent text-white p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder="provide a short bio..."
             required
           ></textarea>
