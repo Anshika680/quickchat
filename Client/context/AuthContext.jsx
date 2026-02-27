@@ -31,7 +31,9 @@ export const AuthProvider = ({ children }) => {
   const login = async (state, credentials) => {
     try {
       const { data } = await axios.post(`/api/auth/${state}`, credentials);
+      console.log("📡 API Response:", data);
       if (data.success) {
+        console.log("✅ Success! Setting authUser:", data.userData);
         setAuthUser(data.userData);
         connectSocket(data.userData);
         axios.defaults.headers.common["token"] = data.token;
@@ -39,9 +41,11 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", data.token);
         toast.success(data.message);
       } else {
+        console.log("❌ Error:", data.message);
         toast.error(data.message);
       }
     } catch (error) {
+      console.log("🚨 Exception:", error);
       toast.error(error.message);
     }
   };
